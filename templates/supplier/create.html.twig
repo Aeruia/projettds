@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %} {% block body %}
+<h1>Create a supplier</h1>
+
+{{ form_start(formSupplier) }}
+
+{{ form_row(formSupplier.name) }}
+{{ form_row(formSupplier.address) }}
+{{ form_row(formSupplier.telephone) }}
+{{ form_row(formSupplier.email) }}
+{{ form_row(formSupplier.contactPerson) }}
+{{ form_row(formSupplier.local) }}
+
+{{ form_end(formSupplier) }}
+{% endblock %}

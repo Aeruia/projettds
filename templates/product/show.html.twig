@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <nav class="navbar navbar-light bg-light">
+        <h2>{{ product.name }}</h2>
+        <div>
+            <a class="btn btn-outline-info" href="{{ path("product.edit", { id: product.id })}}">Modify</a>
+            <a class="btn btn-danger" href="{{ path("product.delete", { id: product.id }) }}">Delete</a>
+        </div>
+    </nav>
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Package</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Subcategory</th>
+                <th scope="col">Gestionaire</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Bio</th>
+                <th scope="col">Supplier</th>
+                <th scope="col">Local</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-info">
+                <td>{{ product.name }}</td>
+                <td>{{ product.unit }}</td>
+                <td>{{ product.package }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.idsubcategory.idcategory }}</td>
+                <td>{{ product.idsubcategory }}</td>
+                <td>
+                    {% for user in product.iduser %}
+                        <span>{{ user }}</span><br/>
+                    {% endfor %}
+                </td>
+                <td>{{product.duedate|date('d-m-Y')}}</td>
+                {% if product.bio %}
+                    <td>Oui</td>
+                {% else %}
+                    <td>Non</td>
+                {% endif %}
+                <td>{{ product.idsupplier }}</td>
+                {% if product.idsupplier.local %}
+                    <td>Oui</td>
+                {% else %}
+                    <td>Non</td>
+                {% endif %}
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

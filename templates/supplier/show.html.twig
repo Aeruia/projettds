@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <nav class="navbar navbar-light bg-light">
+        <h2>{{ supplier.name }}</h2>
+        <div>
+            <a class="btn btn-outline-info" href="{{ path("supplier.edit", { id: supplier.id })}}">Modify</a>
+            <a class="btn btn-danger" href="{{ path("supplier.delete", { id: supplier.id }) }}">Delete</a>
+        </div>
+    </nav>
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Supplier</th>
+                <th scope="col">Address</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Person of contact</th>
+                <th scope="col">Local</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="table-info">
+                <td>{{supplier.name}}</td>
+                <td>{{supplier.address}}</td>
+                <td>{{supplier.telephone}}</td>
+                <td>
+                    <address>{{supplier.email}}</address>
+                </td>
+                <td>{{supplier.contactPerson}}</td>
+                {% if supplier.local %}
+                    <td>Oui</td>
+                {% else %}
+                    <td>Non</td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </td>
+</tr></tbody></table>{% endblock %}

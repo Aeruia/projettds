@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for label, messages in app.flashes(['success', 'danger']) %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+<nav class="navbar navbar-light bg-light">
+    <h2>List of all catagories</h2>
+    <button class="btn btn-outline-info" type="button">
+        <a href="{{ path("category.create")}}">Create</a>
+    </button>
+</nav>
+
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>
+                    <a href="{{ path("category.id", { id: category.id }) }}">{{ category.name }}</a>
+                </td>
+                <td>
+                    {% for user in category.idUser %}
+                        <span>{{ user.username }}</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path("category.delete", { id: category.id }) }}">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" href="{{ path("category.edit", { id: category.id })}}">Modify</a>
+                </td>
+            </tr>
+        </button>
+    </tbody>
+</td></tr>{% endfor %}</tbody></table>{% endblock %}

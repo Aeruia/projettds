@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <nav class="navbar navbar-light bg-light">
+        <h2>List of all products</h2>
+        <button class="btn btn-outline-info" type="button">
+            <a href="{{ path("product.create")}}">Create</a>
+        </button>
+    </nav>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Package</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>User</th>
+                <th>Deadline</th>
+                <th>Bio</th>
+                <th>Supplier</th>
+                <th>Local</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>
+                        <a href="{{ path("product.id", { id: product.id }) }}">{{ product.name }}</a>
+                    </td>
+                    <td>{{ product.unit }}</td>
+                    <td>{{ product.package }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.idsubcategory.idcategory }}</td>
+                    <td>{{ product.idsubcategory }}</td>
+                    <td>
+                        {% for user in product.iduser %}
+                            <span>
+                                {{user}}<br>
+                            </span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ product.duedate|date('d-m-Y') }}</td>
+                    {% if product.bio %}
+                        <td>Oui</td>
+                    {% else %}
+                        <td>Non</td>
+                    {% endif %}
+                    <td>{{ product.idsupplier }}</td>
+                    {% if product.idsupplier %}
+                        {% if product.idsupplier.local %}
+                            <td>Oui</td>
+                        {% else %}
+                            <td>Non</td>
+                        {% endif %}
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>
+                        <a class="btn btn-danger" href="{{ path("product.delete", { id: product.id }) }}">Delete</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-info" href="{{ path("product.edit", { id: product.id })}}">Modify</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </tbody>
+</table>{% endblock %}

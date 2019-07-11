@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <nav class="navbar navbar-light bg-light">
+        <h2>List of all subcategories</h2>
+        <button class="btn btn-outline-info" type="button">
+            <a href="{{ path("subcategory.create")}}">Create</a>
+        </button>
+    </nav>
+    {% for label, messages in app.flashes(['success', 'danger']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subcategory in subcategories %}
+                <tr>
+                    <td>{{ subcategory.id }}</td>
+                    <td>
+                        <a href="{{ path("subcategory.id", { id: subcategory.id }) }}">{{ subcategory.name }}</a>
+                    </td>
+                    <td>{{ subcategory.idcategory }}</td>
+                    <td>
+                        {% for user in subcategory.idUser %}
+                            <span>{{ user.username }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{{ path("subcategory.delete", { id: subcategory.id }) }}">Delete</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-info" href="{{ path("subcategory.edit", { id: subcategory.id })}}">Modify</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
