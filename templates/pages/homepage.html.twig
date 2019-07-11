@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block title 'hey'%} 
+
+
+
+{% block body %}
+hey
+{# affiche donné utilisateur #}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>name: {{ app.user.username }}</p>
+    <p>role: {{ app.user.role }}</p>
+
+{% endif %}
+{% endblock %}

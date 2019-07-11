@@ -1,0 +1,6 @@
+{{ form_start(form)}}
+
+<button class="btn btn-info">{{ button1|default('Enregistrer') }}</button>
+<a class="btn btn-secondary" href="{{path('user.index')}}">{{ button2|default('Annuler') }}</a>
+
+{{ form_end(form)}}

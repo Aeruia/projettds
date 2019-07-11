@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="noindex, nofollow" name="googlebot">
+        <meta content="noindex, nofollow" name="robots">
+        <meta content="noindex, nofollow" name="AdsBot-Google-Mobile-Apps">
+        <meta content="noindex, nofollow" name="AdsBot-Google">
+        <meta content="noindex, nofollow" name=" AdsBot-Google-Mobile">
+        <meta content="noindex, nofollow" name="  AdsBot-Google-Mobile">
+        <meta content="noindex, nofollow" name="Mediapartners-Google">
+        <meta content="noindex, nofollow" name="APIs-Google">
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}Welcome!
+            {% endblock %}
+        </title>
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% block stylesheets %}
+         
+        {% endblock %}
+    </head>
+    <body>
+        <div class="nav-BarreMenue py-0  ">
+            <div class="container  ">
+                <nav class="navbar navbar-expand-lg d-flex navbar-light  justify-content-around  ">
+                    <nav class="navbar navbar-light  ">
+                        <a class="navbar-brand " href="/">
+                            <img " " alt=" class=" d-inline-block align-top " href="#" src=" /logo.jpg">
+                        </a>
+                    </nav>
+                </nav>
+            </div>
+        </div>
+        <div class="container-fluid  bg-info mb-3">
+            <div class="container   ">
+                <nav class="navbar navbar-expand-lg  navbar-light col-12 bg-info">
+
+                    <a class="navbar-brand text-white" href="#">Gestion</a>
+                    <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse  " id="navbarNavDropdown">
+                        <ul class="navbar-nav  d-flex justify-content-around col-12">
+ {# pour le choix des elements accessible  #}
+                            {% if (is_granted('IS_AUTHENTICATED_FULLY') and (app.user.role == 2))%}  
+
+                            <li class="nav-item  dropdown">
+                                <a aria-expanded="false" aria-haspopup="true" class="nav-link text-white dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                                    Tag
+                                </a>
+                                <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu text-white bg-info border-0">
+                                    <a class="dropdown-item text-white" href="#">Creation tag</a>
+
+                                    <a class="dropdown-item text-white" href="#">Gerer tag</a>
+                                </div>
+                            </li>
+                   
+                            {% endif %}
+                                                        {% if (is_granted('IS_AUTHENTICATED_FULLY') and (app.user.role == 1))%}
+
+                            <li class="nav-item dropdown">
+                                <a aria-expanded="false" aria-haspopup="true" class="nav-link text-white dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                                    Pqp
+                                </a>
+                                <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu bg-info border-0">
+                                    <a class="dropdown-item  text-white" href="#">Creation pqp
+                                    </a>
+                                    <a class="dropdown-item  text-white" href="#">Gerer pqp</a>
+                                </div>
+                            </li>
+                                {% endif %}
+
+                                                                                        {% if (is_granted('IS_AUTHENTICATED_FULLY') and (app.user.role == 4))%}
+
+                            <li class="nav-item dropdown">
+                                <a aria-expanded="false" aria-haspopup="true" class="nav-link text-white dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+                                    Sous sous categorie
+                                </a>
+                                <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu bg-info border-0">
+                                    <a class="dropdown-item  text-white" href="#">Creation Sous sous categorie
+                                    </a>
+                                    <a class="dropdown-item  text-white" href="#">Gerer Sous sous categorie</a>
+                                </div>
+                            </li>
+                                {% endif %}
+
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" href="#">Creer un nouveau produit
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
+                        </li>
+                         {# la deconnexion #}
+                        <li class="nav-item ">
+                            <a href="{{path('logout')}}" class="nav-link text-white">Se deconnecter</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        {# {% if app.user %}
+                                                                                                    
+                                                 {% endif %} #}
+    </body>
+</html></div>
+{% for message in app.flashes('success') %}
+<div class="alert alert-success  ">
+    {{message}}
+</div>
+
+{% endfor %}
+
+{% for message in app.flashes('danger') %}
+<div class="alert alert-danger  ">
+    {{message}}
+</div>{% endfor %}
+
+{% block body %}{% endblock %}<div class="container-fluid bg-info mt-5">
+<nav class="container   navbar  navbar-expand-lg ">
+    <div class="collapse d-flex justify-content-center navbar-collapse ml-4 mr-4" id="navbarColor03">
+        <div class="card-deck text-center py-3 ">
+            <div class="card bg-transparent  border-0">
+                <i class="fas fa-2x text-white fa-envelope"></i>
+                <div class="card-body ">
+                    <P class="card text-white  bg-transparent border-0">HELLO@themeisle.com JOBS@THEMEISLE.COM</P>
+                </div>
+            </div>
+            <div class="card bg-transparent  border-0">
+                <i class="fas icone_localisation fa-2x text-white fa-map-marker-alt"></i>
+                <div class="card-body">
+                    <P class="card bg-transparent text-white border-0">394 NATURE PATHWAY YOSEMITE, CA 37491</P>
+                </div>
+            </div>
+            <div class="card bg-transparent border text-white border-0 ">
+                <i class="fas fa-2x fa-mobile-alt"></i>
+                <div class="card-body">
+                    <P class="card text-white bg-transparent border-0 ">09 34 34 34 34 (fr)
+                        <BR>
+                        1(0 9 8) 765 -
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    4321
+                    </P>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav></div><div class="container bas-de-page   py-0">
+<div class="container   ">
+    <div class="row py-3 d-flex justify-content-center ">
+        <i class="fab icone_en_bas fa-2x fa-facebook-f ml-4"></i>
+        <i class="fab icone_en_bas fa-2x fa-pinterest-p mr-4 ml-4"></i>
+        <i class="fas icone_en_bas fa-2x fa-dove mr-4 "></i>
+        <i class="fas icone_en_bas fa-2x fa-camera mr-4"></i>
+    </div>
+    <div class="row   d-flex justify-content-center  ">
+        <p class="auBoutDuBout">
+            <small>
+                tous droits reservés</small>
+        </p>
+    </div>
+</div></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% block javascripts %}
+{% endblock %}</body></html>
