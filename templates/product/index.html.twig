@@ -11,7 +11,7 @@
             {{ message }}
         </div>
     {% endfor %}
-
+    {% dump(products) %}
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -21,8 +21,30 @@
                 <th>Package</th>
                 <th>Stock</th>
                 <th>Price</th>
-                <th>Category</th>
-                <th>Sub Category</th>
+                <th>
+                    <div class="btn-group">
+                        <button aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                            Category
+                        </button>
+                        <div class="dropdown-menu">
+                            {% for category in categories %}
+                                <a class="dropdown-item" href="#">{{ category }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="btn-group">
+                        <button aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                            Sub Category
+                        </button>
+                        <div class="dropdown-menu">
+                            {% for subcategory in subcategories %}
+                                <a class="dropdown-item" href="#">{{ subcategory }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </th>
                 <th>User</th>
                 <th>Deadline</th>
                 <th>Bio</th>

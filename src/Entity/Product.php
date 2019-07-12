@@ -88,13 +88,12 @@ class Product
      */
     private $bio;
 
+
+
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
     }
-
-
-
 
 
     public function getId(): ?int

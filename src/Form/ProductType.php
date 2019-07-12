@@ -10,9 +10,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\SubCategory;
+use App\Entity\Category;
 use App\Entity\Supplier;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class ProductType extends AbstractType
 {
@@ -40,13 +42,12 @@ class ProductType extends AbstractType
             ->add('price')
             ->add('idsubcategory', EntityType::class, [
                 'class' => SubCategory::class,
-                'required' => false
             ])
+
             ->add('iduser', EntityType::class, [
                 'class' => User::class,
                 'multiple' => true,
-                'expanded' => true,
-                'required' => false
+                'expanded' => true
             ])
             ->add('duedate', DateType::class)
             ->add('idsupplier', EntityType::class, [

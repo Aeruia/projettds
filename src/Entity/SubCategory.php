@@ -137,7 +137,6 @@ class SubCategory
         if ($this->idUser->contains($idUser)) {
             $this->idUser->removeElement($idUser);
         }
-
         return $this;
     }
 }

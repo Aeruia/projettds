@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -33,10 +34,10 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('role', ChoiceType::class,[
+            ->add('email', EmailType::class)
+            ->add('role', ChoiceType::class, [
                 'choices' => $this->getChoices()
-            ])
-            ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -50,11 +51,9 @@ class RegistrationFormType extends AbstractType
     {
         $choices = User::ROLE;
         $output = [];
-        foreach($choices as $k => $v)
-        {
+        foreach ($choices as $k => $v) {
             $output[$v] = $k;
         }
         return $output;
     }
-
 }

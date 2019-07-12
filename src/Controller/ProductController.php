@@ -23,8 +23,19 @@ class ProductController extends AbstractController
     public function index(ProductRepository $productRepository)
     {
         $products = $productRepository->findAll();
+        $subcategories = [];
+        foreach ($products as $product) {
+            $subcategories[] = $product->getIdSubCategory();
+        }
+        $subcategories = array_unique($subcategories);
+        foreach ($subcategories as $subcategory) {
+            $categories[] = $subcategory->getIdCategory();
+        }
+        $categories = array_unique($categories);
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'products' => $products,
+            'subcategories' => $subcategories,
+            'categories' => $categories,
         ]);
     }
     /**

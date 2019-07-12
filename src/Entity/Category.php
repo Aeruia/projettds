@@ -41,10 +41,16 @@ class Category
      */
     private $idUser;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="idCategory")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->subCategories = new ArrayCollection();
         $this->idUser = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,6 +126,34 @@ class Category
     {
         if ($this->idUser->contains($idUser)) {
             $this->idUser->removeElement($idUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->addIdCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+            $product->removeIdCategory($this);
         }
 
         return $this;
