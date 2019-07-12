@@ -10,6 +10,17 @@ use Serializable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *  @UniqueEntity(
+ *     fields={"email"}, 
+ *     message="This email already exists."
+ * )
+ */
+
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
@@ -121,6 +132,7 @@ class User implements UserInterface, Serializable
             $this->id,
             $this->username,
             $this->password,
+            
             // see section on salt below
             // $this->salt,
         ]);
@@ -138,11 +150,12 @@ class User implements UserInterface, Serializable
             $this->id,
             $this->username,
             $this->password,
+            
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized, ['allowed_classes' => false]);
     }
-    /**
+        /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="idUser")
      */
     private $products;
@@ -168,8 +181,8 @@ class User implements UserInterface, Serializable
         $this->categories = new ArrayCollection();
         $this->subCategories = new ArrayCollection();
     }
-
-
+    
+     
     /**
      * @return Collection|Product[]
      */
@@ -265,7 +278,9 @@ class User implements UserInterface, Serializable
 
         return $this;
     }
-    public function __toString()
+
+
+public function __toString()
     {
         // to show the name of the Category in the select
         return $this->username;

@@ -34,8 +34,11 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('email', EmailType::class)
-            ->add('role', ChoiceType::class, [
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'attr' => ['placeholder' => 'Please enter your email'],
+            ])
+            ->add('role', ChoiceType::class,[
                 'choices' => $this->getChoices()
             ]);
     }
