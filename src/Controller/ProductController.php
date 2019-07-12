@@ -24,18 +24,23 @@ class ProductController extends AbstractController
     {
         $products = $productRepository->findAll();
         $subcategories = [];
+        $users = [];
+        $categories = [];
         foreach ($products as $product) {
             $subcategories[] = $product->getIdSubCategory();
+            $categories[] = $product->getIdSubCategory()->getIdCategory();
+            foreach ($product->getIdUser() as $user) {
+                $users[] = $user;
+            }
         }
         $subcategories = array_unique($subcategories);
-        foreach ($subcategories as $subcategory) {
-            $categories[] = $subcategory->getIdCategory();
-        }
+        $users = array_unique($users);
         $categories = array_unique($categories);
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'subcategories' => $subcategories,
             'categories' => $categories,
+            'users' => $users
         ]);
     }
     /**

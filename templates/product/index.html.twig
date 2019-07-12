@@ -34,22 +34,45 @@
                     </div>
                 </th>
                 <th>
-                    <div class="btn-group">
-                        <button aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
-                            Sub Category
-                        </button>
-                        <div class="dropdown-menu">
-                            {% for subcategory in subcategories %}
-                                <a class="dropdown-item" href="#">{{ subcategory }}</a>
-                            {% endfor %}
-                        </div>
+                    <button aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                        Sub Category
+                    </button>
+                    <div class="dropdown-menu">
+                        {% for subcategory in subcategories %}
+                            <a class="dropdown-item" href="#">{{ subcategory }}</a>
+                        {% endfor %}
                     </div>
                 </th>
-                <th>User</th>
+                <th>
+                    <button aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                        Users
+                    </button>
+                    <div class="dropdown-menu">
+                        {% for user in users %}
+                            <a class="dropdown-item" href="#">{{ user }}</a>
+                        {% endfor %}
+                    </div>
+                </th>
                 <th>Deadline</th>
-                <th>Bio</th>
+                <th class="dropdown">
+                    <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" type="button">
+                        Bio
+                    </button>
+                    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Oui</a>
+                        <a class="dropdown-item" href="#">Non</a>
+                    </div>
+                </th>
                 <th>Supplier</th>
-                <th>Local</th>
+                <th>
+                    <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" type="button">
+                        Local
+                    </button>
+                    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Oui</a>
+                        <a class="dropdown-item" href="#">Non</a>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>

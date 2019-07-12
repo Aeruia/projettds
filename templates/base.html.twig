@@ -25,6 +25,8 @@
 
             body {
                 height: 2000px;
+                position:relative;
+               
             }
             .navbar .navbar-brand {
                 font-size: 30px;
@@ -53,6 +55,18 @@
 
             a.nav-link:hover {
                 color: yellow;
+            }
+            html{
+                margin:0;
+                padding:0;
+                
+            }
+           
+            .imagefooter {
+                background-color: rgb(122, 117, 102);
+                position:absolute;
+                bottom:0;
+                width:100%;
             }
         </style>
     </head>
@@ -130,6 +144,21 @@
             </nav>
         </body>
     </header>
+     <footer class="page-footer font-small unique-color-dark imagefooter">
+            <div class="container text-center mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 mx-auto mb-4">
+                        <h6 class="text-white font-weight-bold">Conditions Générales d'Utilisation</h6>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 mx-auto mb-4">
+                        <h6 class="text-white font-weight-bold">Mention Légales</h6>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-white font-weight-bold">Confidentialité</h6>
+                    </div>
+                </div>
+            </div>
+        </footer>
     {% block body %}{% endblock %}
 
 
